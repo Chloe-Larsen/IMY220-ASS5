@@ -12,11 +12,11 @@ const UPLOAD_DIR = path.join(__dirname, "uploads");
 app.use(cors());
 app.use(express.json());
 
-app.use("/uploads", express.static(UPLOAD_DIR));
-
 if (!fs.existsSync(UPLOAD_DIR)) {
     fs.mkdirSync(UPLOAD_DIR);
 }
+
+app.use("/uploads", express.static(UPLOAD_DIR));
 
 let posts = [
     {
@@ -48,7 +48,7 @@ app.get("/api/posts", (req, res) => {
     res.json(posts);
 });
 
-app.post("/api/posts", (req, res) => {
+app.post("/api/posts", upload.single("image"), (req, res) => {
     const { username, caption } = req.body;
 
     if (!username || !caption || !req.file) {
@@ -63,7 +63,7 @@ app.post("/api/posts", (req, res) => {
         caption,
         image: req.file.filename
     }
-    posts.push(newPost);    
+    posts.push(newPost);
     res.status(201).json(newPost);
 });
 
