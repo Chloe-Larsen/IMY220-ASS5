@@ -39,37 +39,45 @@ function AddPostForm({ onAddPost }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username
+        <form onSubmit={handleSubmit} className="mb-10 rounded-xl bg-white p-6">
+            <div className="mb-4">
+                <label htmlFor="username" className="mb-1 block text-sm font-semibold text-gray-700">
+                    Username
+                </label>
                 <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-            </label>
+            </div>
 
-            <label>
-                Caption
+            <div className="mb-4">
+                <label htmlFor="caption" className="mb-1 block text-sm font-semibold text-gray-700">
+                    Caption
+                </label>
                 <input
                     type="text"
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-            </label>
+            </div>
 
-            <label>
-                Image
+            <div className="mb-6">
+                <label htmlFor="image" className="mb-1 block text-sm font-semibold text-gray-700">
+                    Image
+                </label>
                 <input
                     type="file"
                     accept="image/*"
                     ref={fileInputRef}
                     onChange={(e) => setImage(e.target.files[0])}
-                    required
+                    className="w-full cursor-pointer rounded-lg border border-gray-300 px-3 py-2 text-gray-700 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold hover:file:bg-blue-100 focus:outline-none focus:ring-2"
                 />
-            </label>
+            </div>
 
-            <button type="submit">Add Post</button>
+            <button type="submit" className="rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Add Post</button>
         </form>
     );
 }

@@ -1,3 +1,4 @@
+// Student Number: u25004141
 import { useEffect, useState } from "react";
 import AddPostForm from "./components/AddPostForm";
 import PostList from "./components/PostList";
@@ -20,8 +21,8 @@ function App() {
     }
 
     return (
-        <main>
-            <h1>PhotoShare</h1>
+        <main className="min-h-screen bg-gray-100 px-4 py-8">
+            <h1 className="mb-8 text-center text-4xl font-extrabold text-gray-900">PhotoShare</h1>
 
             <AddPostForm onAddPost={addPost} />
 
