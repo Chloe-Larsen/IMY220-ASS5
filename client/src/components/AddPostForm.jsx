@@ -1,13 +1,14 @@
 import { useState } from "react";
-
+//Student Number: u25004141
 function AddPostForm({ onAddPost }) {
     const [username, setUsername] = useState("");
     const [caption, setCaption] = useState("");
+    const [image, setImage] = useState(null);
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if (!username || !caption) {
+        if (!username || !caption || !image) {
             return;
         }
 
@@ -22,6 +23,7 @@ function AddPostForm({ onAddPost }) {
 
         setUsername("");
         setCaption("");
+        setImage(null);
     }
 
     return (
@@ -41,6 +43,16 @@ function AddPostForm({ onAddPost }) {
                     type="text"
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
+                />
+            </label>
+
+            <label>
+                Image
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    required
                 />
             </label>
 
